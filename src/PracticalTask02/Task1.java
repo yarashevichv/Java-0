@@ -2,7 +2,7 @@ package PracticalTask02;
 
 public class Task1 {
     public static void main(String[] args) {
-        double weight = Reader.read("Input dinosaur weight:");
+        double weight = Reader.readDouble("Input dinosaur weight:");
 
         Printer.print("Dinosaur weight in mg: "
                     + DinosaurWeight.getMilligrammy(weight));

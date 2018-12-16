@@ -4,10 +4,15 @@ import java.util.Scanner;
 
 public class Reader {
 
-    private static final Scanner in = new Scanner(System.in);
+    private static final Scanner IN = new Scanner(System.in);
 
-    public static double read(String msg) {
+    public static double readDouble(String msg) {
         System.out.println(msg);
-        return in.nextDouble();
+        return IN.nextDouble();
+    }
+
+    public static int readInt(String msg) {
+        System.out.println(msg);
+        return IN.nextInt();
     }
 }
