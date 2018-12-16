@@ -15,4 +15,9 @@ public class Reader {
         System.out.println(msg);
         return IN.nextInt();
     }
+
+    public static char readChar(String msg) {
+        System.out.println(msg);
+        return IN.next().charAt(0);
+    }
 }
