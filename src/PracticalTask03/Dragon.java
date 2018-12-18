@@ -2,23 +2,26 @@ package PracticalTask03;
 
 public class Dragon {
 
-    private static final int NUMBER_OF_HEAD_BEFORE_200 = 3;
-    private static final int NUMBER_OF_HEAD_BEFORE_300 = 2;
-    private static final int NUMBER_OF_HEAD_AFTER_300 = 1;
-    private static final int NUMBER_OF_EYES = 2;
+    public static final int NUMBER_OF_HEAD_FIRST_PERIOD = 3;
+    public static final int NUMBER_OF_HEAD_SECOND_PERIOD = 2;
+    public static final int NUMBER_OF_HEAD_THIRD_PERIOD = 1;
+    public static final int NUMBER_OF_EYES = 2;
+    public static final int FIRST_PERIOD = 200;
+    public static final int SECOND_PERIOD = 300;
 
     public static int calculationNumberOfHeads(int age) {
         int result = 0;
 
         if (age > 0) {
-            for (int i = 0; i <= age; i++) {
-                if (i < 200) {
-                    result += NUMBER_OF_HEAD_BEFORE_200;
-                } else if (i >= 200 && i < 300) {
-                    result += NUMBER_OF_HEAD_BEFORE_300;
-                } else {
-                    result += NUMBER_OF_HEAD_AFTER_300;
-                }
+            if (age < FIRST_PERIOD) {
+                result += NUMBER_OF_HEAD_FIRST_PERIOD * (age + 1);
+            } else if (age < SECOND_PERIOD) {
+                result += NUMBER_OF_HEAD_FIRST_PERIOD * FIRST_PERIOD;
+                result += NUMBER_OF_HEAD_SECOND_PERIOD * (age - FIRST_PERIOD + 1);
+            } else {
+                result += NUMBER_OF_HEAD_FIRST_PERIOD * FIRST_PERIOD;
+                result += NUMBER_OF_HEAD_SECOND_PERIOD * (SECOND_PERIOD - FIRST_PERIOD);
+                result += NUMBER_OF_HEAD_THIRD_PERIOD * (age - SECOND_PERIOD + 1);
             }
         }
 
