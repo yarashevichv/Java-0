@@ -1,4 +1,4 @@
-package by.epam.javatraining.VeranikaYarashevich.tasks.maintask01.view;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask01.view;
 
 /**
  * Class displays a message in console.

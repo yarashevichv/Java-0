@@ -1,4 +1,4 @@
-package by.epam.javatraining.VeranikaYarashevich.tasks.maintask01.model;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask01.model;
 
 import org.junit.Test;
 
@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 /**
  * Class tests methods of LocalExtremeNumber class.
  *
- * @version 1.0 22 Dec 2018
  * @author Veranika Yarashevich
+ * @version 1.0 22 Dec 2018
  */
 public class LocalExtremeNumberTest {
 

@@ -1170,7 +1170,7 @@ public class DataTypeTester {
 
         System.out.println("\n***** Assignment Operators *****");
 
-        c = "test";
+        c = "log4jtesting";
         System.out.printf("%s += %s --> c = %s\n", c, a, c += a);
 
         // c -= a;
@@ -1189,10 +1189,10 @@ public class DataTypeTester {
         System.out.printf("%s == %s --> %b\n", a, b, a == b);
         System.out.printf("%s != %s --> %b\n", a, b, a != b);
 
-        // test = a > b;
-        // test = a >= b;
-        // test = a < b;
-        // test = a <= b;
+        // log4jtesting = a > b;
+        // log4jtesting = a >= b;
+        // log4jtesting = a < b;
+        // log4jtesting = a <= b;
 
         System.out.println("\n***** Logical Operations *****");
 
