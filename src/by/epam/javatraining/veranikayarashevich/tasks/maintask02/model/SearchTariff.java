@@ -1,7 +1,7 @@
 package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model;
 
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.Tariff;
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.TypeTariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.Tariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.TypeTariff;
 import by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception.NotDefinedTariffException;
 import by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception.TariffBaseIsEmptyException;
 
@@ -20,24 +20,25 @@ public class SearchTariff {
         } else if (hasPackageOfGigabytes) {
             result = TypeTariff.COMFORT.name();
         } else {
-            throw new NotDefinedTariffException();
+            result = TypeTariff.DEFAULT.name();
         }
 
         return result;
     }
 
-    public static String searchMostExpensive(Tariff[] tariffs) throws TariffBaseIsEmptyException {
+    public static String searchMostCheap(Tariff[] tariffs) throws TariffBaseIsEmptyException {
 
         Tariff[] array = tariffs;
 
         if (array.length == 0) {
             throw new TariffBaseIsEmptyException();
         } else {
-            double max = array[0].getCostOfTariff();
+            double min = array[0].getCostOfTariff();
             String result = array[0].getTypeOfTariff();
 
             for (int i = 1; i < array.length; i++) {
-                if (max < array[i].getCostOfTariff()) {
+                if (min > array[i].getCostOfTariff()) {
+                    min = array[i].getCostOfTariff();
                     result = array[i].getTypeOfTariff();
                 }
             }

@@ -1,48 +1,51 @@
 package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model;
 
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.ChildrenTariff;
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.ComfortTariff;
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.SmartTariff;
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.Tariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.Tariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.TariffDatabase;
 import by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception.TariffBaseIsEmptyException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SortingByParameter {
 
-    public static final int SIZE_OF_COLUMNS = 2;
+    public static List<Tariff> AscSortByCost(TariffDatabase database) throws TariffBaseIsEmptyException {
+        List<Tariff> array = database.getDatabase();
 
-    public static String[][] AscSortByCost(Tariff[] tariffs) throws TariffBaseIsEmptyException {
-        Tariff[] array = tariffs;
-
-        if (array.length == 0) {
+        if (array.size() == 0) {
             throw new TariffBaseIsEmptyException();
         } else {
-            String[][] result = new String[array.length][SIZE_OF_COLUMNS];
-
-            for (int i = 0; i < result.length; i++) {
-                result[i][0] = array[i].getTypeOfTariff();
-            }
-
-            if (array.length > 1) {
-                for (int i = 0; i < result.length; i++) {
-                    for (int j = 1; j < result[i].length; j++) {
-                        if (array[j - 1].getCostOfTariff() > array[j].getCostOfTariff()) {
-                            double temp = array[j - 1].getCostOfTariff();
-                            array[j - 1].setCostOfTariff(array[j].getCostOfTariff());
-                            array[j].setCostOfTariff(temp);
-
-                            String s = result[j - 1][0];
-                            result[j - 1][0] = result[j][0];
-                            result[j][0] = s;
-                        }
+            if (array.size() > 1) {
+                for (int i = 1; i < array.size(); i++) {
+                    if (array.get(i - 1).getCostOfTariff() > array.get(i).getCostOfTariff()) {
+                        Tariff temp = array.get(i - 1);
+                        array.set(i - 1, array.get(i));
+                        array.set(i, temp);
                     }
                 }
             }
 
-            for (int i = 0; i < result.length; i++) {
-                result[i][1] = String.valueOf(array[i].getCostOfTariff());
+            return array;
+        }
+    }
+
+    public static List<Tariff> AscSortByPackageOfMinutes(TariffDatabase database) throws TariffBaseIsEmptyException {
+        List<Tariff> array = database.getDatabase();
+
+        if (array.size() == 0) {
+            throw new TariffBaseIsEmptyException();
+        } else {
+            if (array.size() > 1) {
+                for (int i = 1; i < array.size(); i++) {
+                    if (array.get(i - 1).getPackageOfMinutes() > array.get(i).getPackageOfMinutes()) {
+                        Tariff temp = array.get(i - 1);
+                        array.set(i - 1, array.get(i));
+                        array.set(i, temp);
+                    }
+                }
             }
 
-            return result;
+            return array;
         }
     }
 }

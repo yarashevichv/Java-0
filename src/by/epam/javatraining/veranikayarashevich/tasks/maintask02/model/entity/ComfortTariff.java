@@ -1,10 +1,10 @@
-package by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity;
 
 import java.util.Objects;
 
 public class ComfortTariff extends Tariff {
 
-    private double packageOfGigabytes;
+    private double packageOfGigabytes = 0;
 
     public ComfortTariff(double costOfTariff, int packageOfMinutes, double packageOfGigabytes) {
         super(TypeTariff.COMFORT, costOfTariff, packageOfMinutes);
@@ -12,9 +12,11 @@ public class ComfortTariff extends Tariff {
     }
 
     public ComfortTariff() {
-        super();
-        this.packageOfGigabytes = 0;
         this.setType(TypeTariff.COMFORT);
+    }
+
+    public void setPackageOfGigabytes(double packageOfGigabytes) {
+        this.packageOfGigabytes = packageOfGigabytes;
     }
 
     public double getPackageOfGigabytes() {
@@ -25,22 +27,19 @@ public class ComfortTariff extends Tariff {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ComfortTariff)) return false;
+        if (!super.equals(o)) return false;
         ComfortTariff that = (ComfortTariff) o;
-        return Double.compare(that.getPackageOfGigabytes(), getPackageOfGigabytes()) == 0 &&
-                getCostOfTariff() == that.getCostOfTariff() &&
-                getPackageOfMinutes() == that.getPackageOfMinutes();
+        return Double.compare(that.getPackageOfGigabytes(), getPackageOfGigabytes()) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPackageOfGigabytes());
+        return Objects.hash(super.hashCode(), getPackageOfGigabytes());
     }
 
     @Override
     public String toString() {
         return "ComfortTariff{" +
-                "costOfTariff=" + getCostOfTariff() +
-                "packageOfMinutes=" + getPackageOfMinutes() +
                 "packageOfGigabytes=" + packageOfGigabytes +
                 '}';
     }

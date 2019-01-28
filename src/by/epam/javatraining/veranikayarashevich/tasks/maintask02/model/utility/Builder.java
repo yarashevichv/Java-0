@@ -1,6 +1,6 @@
-package by.epam.javatraining.veranikayarashevich.tasks.maintask02.utils;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.utility;
 
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.*;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.*;
 import by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception.NotDefinedTariffException;
 
 public class Builder {
@@ -31,15 +31,17 @@ public class Builder {
         return tariff;
     }
 
-    public static Client buildClient(int phoneNumber, String name, TypeTariff typeTariff) {
+    public static Client buildClient(String phoneNumber, String name, TypeTariff typeTariff) {
         return new Client(phoneNumber, name, typeTariff);
     }
 
-    public static String[][] buildClientBase(Client... clients) {
+    public static ClientDatabase buildClientDatabase(Client... clients) {
+        ClientDatabase database = new ClientDatabase();
+
         for (Client c : clients) {
-            ClientBase.setClient(c);
+            database.setClient(c);
         }
 
-        return ClientBase.getBase();
+        return database;
     }
 }

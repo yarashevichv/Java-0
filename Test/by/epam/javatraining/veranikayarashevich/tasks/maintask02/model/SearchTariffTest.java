@@ -1,6 +1,9 @@
 package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model;
 
-import by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity.*;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.ChildrenTariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.ComfortTariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.SmartTariff;
+import by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity.Tariff;
 import by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception.NotDefinedTariffException;
 import by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception.TariffBaseIsEmptyException;
 import org.testng.annotations.Test;
@@ -45,7 +48,7 @@ public class SearchTariffTest {
                 new ChildrenTariff(10.0, 200, 10)};
 
         try {
-            assertEquals("CHILDREN", SearchTariff.searchMostExpensive(tariffs));
+            assertEquals("SMART", SearchTariff.searchMostCheap(tariffs));
         } catch (TariffBaseIsEmptyException e) {
             e.printStackTrace();
         }
@@ -54,7 +57,7 @@ public class SearchTariffTest {
     @Test
     public void searchMostExpensive2() {
         try {
-        SearchTariff.searchMostExpensive(new Tariff[]{});
+        SearchTariff.searchMostCheap(new Tariff[]{});
         } catch (TariffBaseIsEmptyException e) {
             e.printStackTrace();
         }
@@ -67,7 +70,7 @@ public class SearchTariffTest {
                 new SmartTariff(19.2, 120, 5, 300)};
 
         try {
-            assertEquals("SMART", SearchTariff.searchMostExpensive(tariffs));
+            assertEquals("CHILDREN", SearchTariff.searchMostCheap(tariffs));
         } catch (TariffBaseIsEmptyException e) {
             e.printStackTrace();
         }

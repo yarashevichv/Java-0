@@ -1,7 +1,10 @@
 package by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception;
 
-public class NotDefinedTariffException extends UserException {
+public class NotDefinedTariffException extends LogicalException {
     public NotDefinedTariffException(){
-        super();
+    }
+
+    public NotDefinedTariffException(String msg) {
+        super(msg);
     }
 }

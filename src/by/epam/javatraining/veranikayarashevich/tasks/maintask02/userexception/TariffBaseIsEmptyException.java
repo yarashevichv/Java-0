@@ -1,7 +1,10 @@
 package by.epam.javatraining.veranikayarashevich.tasks.maintask02.userexception;
 
-public class TariffBaseIsEmptyException extends UserException {
+public class TariffBaseIsEmptyException extends LogicalException {
     public TariffBaseIsEmptyException() {
-        super();
+    }
+
+    public TariffBaseIsEmptyException(String msg) {
+        super(msg);
     }
 }

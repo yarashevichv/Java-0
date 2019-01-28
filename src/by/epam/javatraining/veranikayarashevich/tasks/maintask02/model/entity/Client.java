@@ -1,18 +1,18 @@
-package by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity;
 
 public class Client {
 
-    private int phoneNumber;
+    private String phoneNumber;
     private String name;
     private TypeTariff typeTariff;
 
-    public Client(int phoneNumber, String name, TypeTariff typeTariff) {
+    public Client(String phoneNumber, String name, TypeTariff typeTariff) {
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.typeTariff = typeTariff;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

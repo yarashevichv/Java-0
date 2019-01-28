@@ -1,11 +1,11 @@
-package by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity;
 
 import java.util.Objects;
 
 public class SmartTariff extends Tariff {
 
-    private double packageOfGigabytes;
-    private int packageOfSMS;
+    private double packageOfGigabytes = 0;
+    private int packageOfSMS = 0;
 
     public SmartTariff(double costOfTariff, int packageOfMinutes, double packageOfGigabytes, int packageOfSMS) {
         super(TypeTariff.SMART, costOfTariff, packageOfMinutes);
@@ -14,10 +14,15 @@ public class SmartTariff extends Tariff {
     }
 
     public SmartTariff() {
-        super();
-        this.packageOfGigabytes = 0;
-        this.packageOfSMS = 0;
         this.setType(TypeTariff.SMART);
+    }
+
+    public void setPackageOfGigabytes(double packageOfGigabytes) {
+        this.packageOfGigabytes = packageOfGigabytes;
+    }
+
+    public void setPackageOfSMS(int packageOfSMS) {
+        this.packageOfSMS = packageOfSMS;
     }
 
     public double getPackageOfGigabytes() {
@@ -32,25 +37,23 @@ public class SmartTariff extends Tariff {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SmartTariff)) return false;
+        if (!super.equals(o)) return false;
         SmartTariff that = (SmartTariff) o;
         return Double.compare(that.getPackageOfGigabytes(), getPackageOfGigabytes()) == 0 &&
-                getPackageOfSMS() == that.getPackageOfSMS() &&
-                getCostOfTariff() == that.getCostOfTariff() &&
-                getPackageOfMinutes() == that.getPackageOfMinutes();
+                getPackageOfSMS() == that.getPackageOfSMS();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPackageOfGigabytes(), getPackageOfSMS());
+        return Objects.hash(super.hashCode(), getPackageOfGigabytes(), getPackageOfSMS());
     }
 
     @Override
     public String toString() {
         return "SmartTariff{" +
-                "costOfTariff=" + getCostOfTariff() +
-                "packageOfMinutes=" + getPackageOfMinutes() +
                 "packageOfGigabytes=" + packageOfGigabytes +
                 ", packageOfSMS=" + packageOfSMS +
                 '}';
     }
+
 }

@@ -1,12 +1,12 @@
-package by.epam.javatraining.veranikayarashevich.tasks.maintask02.entity;
+package by.epam.javatraining.veranikayarashevich.tasks.maintask02.model.entity;
 
 import java.util.Objects;
 
 public class BusinessTariff extends Tariff {
 
-    private int packageOfMinutesInOtherCountry;
-    private double packageOfGigabytes;
-    private int packageOfSMS;
+    private int packageOfMinutesInOtherCountry = 0;
+    private double packageOfGigabytes = 0;
+    private int packageOfSMS = 0;
 
     public BusinessTariff(double costOfTariff, int packageOfMinutes, int packageOfMinutesInOtherCountry,
                           double packageOfGigabytes, int packageOfSMS) {
@@ -16,11 +16,19 @@ public class BusinessTariff extends Tariff {
         this.packageOfSMS = packageOfSMS;
     }
 
+    public void setPackageOfMinutesInOtherCountry(int packageOfMinutesInOtherCountry) {
+        this.packageOfMinutesInOtherCountry = packageOfMinutesInOtherCountry;
+    }
+
+    public void setPackageOfGigabytes(double packageOfGigabytes) {
+        this.packageOfGigabytes = packageOfGigabytes;
+    }
+
+    public void setPackageOfSMS(int packageOfSMS) {
+        this.packageOfSMS = packageOfSMS;
+    }
+
     public BusinessTariff() {
-        super();
-        this.packageOfMinutesInOtherCountry = 0;
-        this.packageOfGigabytes = 0;
-        this.packageOfSMS = 0;
         this.setType(TypeTariff.BUSINESS);
     }
 
@@ -40,17 +48,17 @@ public class BusinessTariff extends Tariff {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof BusinessTariff)) return false;
+        if (!super.equals(o)) return false;
         BusinessTariff that = (BusinessTariff) o;
         return getPackageOfMinutesInOtherCountry() == that.getPackageOfMinutesInOtherCountry() &&
                 Double.compare(that.getPackageOfGigabytes(), getPackageOfGigabytes()) == 0 &&
-                getPackageOfSMS() == that.getPackageOfSMS() &&
-                getCostOfTariff() == that.getCostOfTariff() &&
-                getPackageOfMinutes() == that.getPackageOfMinutes();
+                getPackageOfSMS() == that.getPackageOfSMS();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPackageOfMinutesInOtherCountry(), getPackageOfGigabytes(), getPackageOfSMS());
+        return Objects.hash(super.hashCode(), getPackageOfMinutesInOtherCountry(), getPackageOfGigabytes(),
+                getPackageOfSMS());
     }
 
     @Override
